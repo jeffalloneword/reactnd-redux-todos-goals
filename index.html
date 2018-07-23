@@ -200,6 +200,7 @@
       return next(action)
     }
 
+
     const logger = (store) => (next) => (action) => {
       console.group(action.type)
         console.log('The action: ', action)
@@ -320,7 +321,7 @@
         dispatch(handleInitialData())
       }
       render() {
-        
+
         if (this.props.loading === true) {
           return <h3>Loading...</h3>
         }
@@ -337,18 +338,6 @@
     const ConnectedApp = ReactRedux.connect((state) => ({
       loading: state.loading
     }))(App)
-
-    const Context = React.createContext()
-
-    class Provider extends React.Component {
-      render () {
-        return (
-          <Context.Provider value={this.props.store}>
-            {this.props.children}
-          </Context.Provider>
-        )
-      }
-    }
 
     ReactDOM.render(
       <ReactRedux.Provider store={store}>
